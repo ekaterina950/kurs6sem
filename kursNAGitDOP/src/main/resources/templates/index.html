@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="icon" href="../static/icons/Icons.png" type="image/png">
+    <style>
+        .copyrighttext{
+          width: 100%;
+
+          text-align: center;
+          padding: 8px 40px;
+          color: #fff;
+        }
+        .footer {
+          border-radius: 25px;
+          border: 10px solid transparent;
+          border-image: linear-gradient(45deg,#5BC7F2, #FF7FA9) 1;
+
+          color: white;
+        }
+        .txt{
+          background-image: url('resources/static/images/back.png');
+          background-repeat: no-repeat;
+          background-size: cover;
+          color: #fff;
+          padding: 30px;
+          width: 600px;
+        }
+        .txt h2{
+          text-align: center;
+          font-family: "Comfortaa";
+          margin-bottom: 20px;
+        }
+        .txt p{
+          text-align: justify;
+          font-family: 'Caveat', cursive;
+        font-family: 'Comfortaa', cursive;
+        font-family: 'Kolker Brush', cursive;
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        }
+        .btn{
+          display: inline-block;
+          font-size: 18px;
+          padding: 24px 70px;
+          background: linear-gradient(45deg,#5BC7F2, #FF7FA9);
+          color: #fff;
+          border-radius: 40px;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          position: relative;
+          box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+          transition: box-shadow 0.25s;
+          z-index: 2;
+        }
+        .btn:active{
+          background:  #FF7FA9;
+          box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+        }
+
+
+    </style>
+</head>
+<body style="background-color:  #000000;">
+<div class="my-4 container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-11 col-xl-11">
+
+
+                <div th:if="${param.logout}" class="mr-5" style="color: #A9D0F8; position: absolute; right: 0">You have successfully logged out.</div>
+
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <img alt="beer?" class="d-block mx-5" width="75px" src="../static/icons/sushi.png" th:src="@{/icons/sushi.png}">
+                    <a href="/index">
+                        <span class="display-4" style="color: #FFC0CB;">Roll Paradise</span>
+
+                    </a>
+                    <button class="navbar-toggler" style="border: 3px solid white; border-radius: 20px" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon" style="color: white;">
+                            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active" >
+                                <a class="nav-link h4 px-4 mt-3" style="color: white; border: 3px solid #A9D0F8; border-radius: 30px" href="/home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link h4 px-4 mt-3" style="color: white; border: 3px solid #A9D0F8; border-radius: 30px" href="/reservation">Reserve</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle h4 px-4 mt-3" id="navbarDropdownMenuLink" style="color: #A9D0F8;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${username}"></a>
+                                <div class="dropdown-menu dropdown-menu-right p-0" style="border: none; background-color: #000000;" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item mb-2" th:attr="href=${linkInOrAccount}" style="background: linear-gradient(45deg,#5BC7F2, #FF7FA9); color: white; border-radius: 25px" th:text="${textInOrAccount}">LogIn</a>
+                                    <a class="dropdown-item" th:attr="href=${linkOutOrUp}" style="background-color: grey; color: white; border-radius: 25px" th:text="${textOutOrUp}">LogOut</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="row justify-content-center align-items-center text-center">
+                    <div class="col-10 col-xl-5">
+                        <div class="txt">
+                            <h2>Меню в Roll Paradise</h2>
+                            <p>В нашем суши-баре Roll Paradise, работает слаженная
+                                команда молодых поваров под предводительством Ивана Петрова. В меню
+                                представлены разнообразные суши и роллы, изготовленные из свежайших
+                                ингредиентов, включая классические и авторские рецепты.</p><br>
+
+                            <p>Вы можете насладиться традиционными oнигири и сашими, а также попробовать
+                                уникальные роллы с необычными сочетаниями вкусов. Также в меню представлены
+                                горячие блюда японской кухни, такие как темпура, якисоба и удон,
+                                разнообразные закуски и салаты.</p><br>
+
+                            <p>В суши-баре создается уютная и дружелюбная атмосфера, идеальная для встреч
+                                с друзьями, семейных обедов и романтических ужинов. Мы также предлагаем
+                                комплексные обеды по будням и специальные предложения на выходные.</p><br>
+
+                            <p> В нашем суши-баре организуются вечеринки с приглашенными диджеями и
+                                корпоративные мероприятия для больших компаний, а также празднуются
+                                дни рождения.</p><br>
+
+                            <button class="btn" id="btn" type="button" name="button">Read more</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <footer class="footer py-3" style=" color: white; border-radius: 25px">
+                    <div class="mx-5">
+                        <div class="row justify-content-center text-center">
+                            <div class="col">Contacts! Just in case...</div>
+                        </div>
+                        <div class="row justify-content-center text-center">
+                            <div class="col-6 col-xl-3">Мамонова Е.А.</div>
+                            <div class="col-6 col-xl-3">ИКБО-24-21</div>
+                            <div class="col-6 col-xl-3">
+                                <img alt="vk?" class="mx-auto" width="30px" src="../static/icons/vk.png" th:src="@{/icons/vk.png}">
+                                <a class="text-light" target="_blank" href="https://vk.com/id198165768">vk.com/kate.mamonova</a>
+                            </div>
+
+                            <div class="col-6 col-xl-3">
+                                <img alt="github?" class="mx-auto" width="30px" src="../static/icons/mail.png" th:src="@{/icons/mail.png}">
+                                katevajs_mamonova@mail.ru
+                            </div>
+                            <div class="col-6 col-xl-3">
+                                <img alt="github?" class="mx-auto" width="30px" src="../static/icons/github.png" th:src="@{/icons/github.png}">
+                                <a class="text-light" target="_blank" href="https://github.com/ekaterina950">github.com/ekaterina950</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </footer>
+                <div class="copyrighttext">
+                    <p>2024© Student MIREA. ALL RIGHTS RESERVED</p>
+                </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
